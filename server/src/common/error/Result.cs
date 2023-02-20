@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace trabalhandoFilterException.src.Model
+namespace server.src.common.error
 {
     public class Result: JsonResult
     {
