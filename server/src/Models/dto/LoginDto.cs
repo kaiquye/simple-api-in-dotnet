@@ -4,16 +4,20 @@ using FluentValidation;
 namespace server.src.Models.dto
 {
 
-    public class LoginDtoValidation: AbstractValidator<LoginDto>
+    public class LoginDtoValidation : AbstractValidator<LoginDto>
     {
-        readonly Regex passRegex = new Regex("^[a-zA-Z0-9]*$");
-        public LoginDtoValidation() {
+        public LoginDtoValidation()
+        {
             RuleFor(dto => dto.userName)
             .NotNull();
-            
+
             RuleFor(dto => dto.password)
-            .NotNull()
-            .Matches(passRegex);
+           .MinimumLength(8).WithMessage("Your password length must be at least 8.")
+                    .MaximumLength(16).WithMessage("Your password length must not exceed 16.")
+                    .Matches(@"[A-Z]+").WithMessage("Your password must contain at least one uppercase letter.")
+                    .Matches(@"[a-z]+").WithMessage("Your password must contain at least one lowercase letter.")
+                    .Matches(@"[0-9]+").WithMessage("Your password must contain at least one number.")
+                    .Matches(@"[\@\*\.]+").WithMessage("Your password must contain at least one (@ *.).");
         }
     }
     public class LoginDto

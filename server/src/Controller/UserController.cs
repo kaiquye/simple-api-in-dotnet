@@ -7,6 +7,7 @@ namespace server.src.Controller
     [Route("v1/user")]
     public class UserController : ControllerBase
     {
-        public string create(LoginDto data) { return null; }
+        [HttpPost]
+        public string create(LoginDto data) { return "tested"; }
     }
 }
