@@ -8,6 +8,6 @@ namespace server.src.Controller
     public class UserController : ControllerBase
     {
         [HttpPost]
-        public string create(LoginDto data) { return "tested"; }
+        public string create(LoginDto data) { throw new Exception("error"); }
     }
 }

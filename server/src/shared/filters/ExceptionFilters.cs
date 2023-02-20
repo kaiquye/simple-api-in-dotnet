@@ -12,6 +12,7 @@ namespace server.src.common.filters
             {
                 message = "internal error. Contact an adm.",
                 success = false,
+                code = "error.internal-error"
             })
             { StatusCode = 500 };
         }
