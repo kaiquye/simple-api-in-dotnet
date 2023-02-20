@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hfro18fxb+02T5SpVjxhQCUmipwRQ6Rmg5P+YsNIhGLTRm/fOmPCsZiBJU+IYrMpbhI6wbagu025c0JBgXemZw==",
+  "dgSpecHash": "MYYxFvTWJooYy9vN6Q46g/sUI5pVfHIq8RG3ZIKdFg20No4/LmveHA8SVC7QYKJVcWnwd7gnTNNQGHlLzc8GOw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Projetos C#\\login-dotnet-react\\server\\server.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",

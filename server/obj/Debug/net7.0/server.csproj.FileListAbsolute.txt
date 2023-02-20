@@ -41,3 +41,6 @@ C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\
 C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\obj\Debug\net7.0\server.pdb
 C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\obj\Debug\net7.0\server.genruntimeconfig.cache
 C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\obj\Debug\net7.0\ref\server.dll
+C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Users\Admin\OneDrive\Área de Trabalho\Projetos C#\login-dotnet-react\server\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
