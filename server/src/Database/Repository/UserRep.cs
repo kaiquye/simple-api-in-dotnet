@@ -1,3 +1,4 @@
+using server.src.Database.Connection;
 using server.src.Database.Repository.structure;
 using server.src.Models.entity;
 
@@ -5,9 +6,15 @@ namespace server.src.Database.Repository
 {
     public class UserRep : IUserRep
     {
-        public Task<User> save(User user)
+        private readonly ConnectionDb _postgres;
+        public UserRep(ConnectionDb conn)
         {
-            throw new NotImplementedException();
+            _postgres = conn;
+        }
+        public async Task<User> save(User user)
+        {
+            _postgres.user.Save(users);
+            await _postgres.SaveChangesAsync();
         }
         public Task<User> emailExist(string email)
         {
