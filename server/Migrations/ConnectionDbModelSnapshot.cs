@@ -24,15 +24,18 @@ namespace server.Migrations
 
             modelBuilder.Entity("server.src.Models.entity.Address", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("city")
                         .IsRequired()
@@ -45,9 +48,6 @@ namespace server.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<Guid>("user_id")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("zip_code")
                         .IsRequired()
                         .IsUnicode(false)
@@ -55,7 +55,7 @@ namespace server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("user_id")
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("Address", (string)null);
@@ -63,14 +63,14 @@ namespace server.Migrations
 
             modelBuilder.Entity("server.src.Models.entity.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("email")
@@ -102,30 +102,14 @@ namespace server.Migrations
                 {
                     b.HasOne("server.src.Models.entity.User", null)
                         .WithOne("address")
-                        .HasForeignKey("server.src.Models.entity.Address", "user_id")
+                        .HasForeignKey("server.src.Models.entity.Address", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("server.src.Models.entity.User", b =>
                 {
-                    b.HasOne("server.src.Models.entity.Address", null)
-                        .WithOne("user")
-                        .HasForeignKey("server.src.Models.entity.User", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("server.src.Models.entity.Address", b =>
-                {
-                    b.Navigation("user")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("server.src.Models.entity.User", b =>
-                {
-                    b.Navigation("address")
-                        .IsRequired();
+                    b.Navigation("address");
                 });
 #pragma warning restore 612, 618
         }

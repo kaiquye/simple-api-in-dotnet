@@ -1,5 +1,6 @@
 using FluentValidation;
 using server.src.Models.entity;
+using server.src.Models.entity.structure;
 
 namespace server.src.Models.dto
 {
@@ -13,7 +14,7 @@ namespace server.src.Models.dto
            .NotEmpty();
             RuleFor(dto => dto.email)
            .NotEmpty();
-       
+
 
             RuleFor(dto => dto.address.street)
            .NotEmpty();
@@ -29,6 +30,6 @@ namespace server.src.Models.dto
         public string? last_name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public Address address { get; set; }
+        public virtual Address address { get; set; }
     }
 }

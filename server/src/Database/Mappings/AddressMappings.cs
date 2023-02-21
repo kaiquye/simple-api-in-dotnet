@@ -23,9 +23,6 @@ namespace server.src.Database.Mappings
                 .IsUnicode(false)
                 .IsRequired(true);
 
-            builder.HasOne(p => p.user)
-                .WithOne()
-                .HasForeignKey<User>(x => x.Id);
         }
     }
 }

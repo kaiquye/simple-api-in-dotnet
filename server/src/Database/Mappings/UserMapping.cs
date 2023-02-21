@@ -29,7 +29,7 @@ namespace server.src.Database.Connection
 
             builder.HasOne(p => p.address)
                 .WithOne()
-                .HasForeignKey<Address>(x => x.user_id);
+                .HasForeignKey<Address>(x => x.UserId);
         }
     }
 }
