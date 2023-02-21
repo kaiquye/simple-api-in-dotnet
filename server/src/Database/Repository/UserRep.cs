@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using server.src.Database.Connection;
 using server.src.Database.Repository.structure;
@@ -19,11 +19,17 @@ namespace server.src.Database.Repository
             await _postgres.SaveChangesAsync();
 
             user.Id = saved.Entity.Id;
+            user.password = null;
             return user;
         }
-        public Task<User> emailExist(string email)
+        public async Task<bool> emailExists(string email)
         {
-            throw new NotImplementedException();
+            var id = await _postgres.users.Where(user => user.email == email).Select(user => new { Id = user.Id }).FirstOrDefaultAsync();
+            if (id != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
