@@ -20,7 +20,7 @@ namespace server.src.Services
             bool emailExists = await _userRep.emailExists(data.email);
             if (emailExists == true)
             {
-                return Result.fail<NewUserDtoRes>(409, new NewUserDtoRes { data = null, message = "Error: the email entered is already registered", success = false });
+                return Result.fail<NewUserDtoRes>(409, new NewUserDtoRes { data = null, message = "Error: the email entered is already registered" });
             }
 
             User user = new User { fist_name = data.fist_name, email = data.email, password = data.password };
@@ -31,7 +31,7 @@ namespace server.src.Services
 
             User saved = await _userRep.save(user);
 
-            return Result.success<NewUserDtoRes>(201, new NewUserDtoRes { data = saved, message = "created user.", success = true });
+            return Result.success<NewUserDtoRes>(201, new NewUserDtoRes { data = saved, message = "created user." });
         }
     }
 }
