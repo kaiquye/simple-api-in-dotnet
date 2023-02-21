@@ -1,4 +1,5 @@
 using FluentValidation;
+using server.src.Models.dto.structure;
 using server.src.Models.entity;
 using server.src.Models.entity.structure;
 
@@ -32,4 +33,8 @@ namespace server.src.Models.dto
         public string password { get; set; }
         public virtual Address address { get; set; }
     }
+
+
+    public class NewUserDtoRes : IDtoResponseBase<User>
+    { }
 }

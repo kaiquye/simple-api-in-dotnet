@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using server.src.common.error;
 using server.src.Models.dto;
 using server.src.Models.entity;
 using server.src.Services.structure;
@@ -16,10 +17,9 @@ namespace server.src.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> create(NewUserDto data)
+        public async Task<Result> create(NewUserDto data)
         {
-            User user = await _userService.create(data);
-            return Ok(user);
+            return await _userService.create(data);
         }
     }
 }

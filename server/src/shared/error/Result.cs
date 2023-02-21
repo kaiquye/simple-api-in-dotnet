@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using server.src.Models.entity;
 
 namespace server.src.common.error
 {
@@ -14,15 +15,15 @@ namespace server.src.common.error
             this.StatusCode = status;
         }
 
-        public static Result success(int status, params object[] value)
+        public static Result success<T>(int status, params T[] value)
         {
             var response = new { data = value, status, sucess = true };
             return new Result(response, status);
         }
 
-        public static Result fail(int status, string message)
+        public static Result fail<T>(int status, T value)
         {
-            var response = new { error = message, status, sucess = false };
+            var response = new { error = value, status, sucess = false };
             return new Result(response, status);
         }
     }
