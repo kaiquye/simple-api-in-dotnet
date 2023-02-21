@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using server.src.Database.Mappings;
 using server.src.Models.entity;
 using server.src.Models.entity.structure;
 
@@ -11,9 +12,11 @@ namespace server.src.Database.Connection
         public DbSet<User> users { get; set; }
         public DbSet<Address> address { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        { }
+        {
+            modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new AddressMapping());
+        }
 
         public override int SaveChanges()
         {

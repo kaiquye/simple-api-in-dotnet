@@ -13,8 +13,9 @@ namespace server.src.Database.Repository
         }
         public async Task<User> save(User user)
         {
-            _postgres.user.Save(users);
+            _postgres.users.Add(user);
             await _postgres.SaveChangesAsync();
+            return user;
         }
         public Task<User> emailExist(string email)
         {

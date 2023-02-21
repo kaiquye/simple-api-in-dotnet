@@ -36,17 +36,21 @@ namespace server.Migrations
 
                     b.Property<string>("city")
                         .IsRequired()
+                        .IsUnicode(false)
                         .HasColumnType("text");
 
                     b.Property<string>("street")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<Guid>("user_id")
                         .HasColumnType("uuid");
 
                     b.Property<string>("zip_code")
                         .IsRequired()
+                        .IsUnicode(false)
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -54,7 +58,7 @@ namespace server.Migrations
                     b.HasIndex("user_id")
                         .IsUnique();
 
-                    b.ToTable("address");
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("server.src.Models.entity.User", b =>
@@ -71,34 +75,51 @@ namespace server.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
+                        .IsUnicode(true)
                         .HasColumnType("text");
 
                     b.Property<string>("fist_name")
                         .IsRequired()
+                        .IsUnicode(false)
                         .HasColumnType("text");
 
                     b.Property<string>("last_name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("password")
                         .IsRequired()
+                        .IsUnicode(false)
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("users");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("server.src.Models.entity.Address", b =>
                 {
-                    b.HasOne("server.src.Models.entity.User", "user")
+                    b.HasOne("server.src.Models.entity.User", null)
                         .WithOne("address")
                         .HasForeignKey("server.src.Models.entity.Address", "user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("user");
+            modelBuilder.Entity("server.src.Models.entity.User", b =>
+                {
+                    b.HasOne("server.src.Models.entity.Address", null)
+                        .WithOne("user")
+                        .HasForeignKey("server.src.Models.entity.User", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("server.src.Models.entity.Address", b =>
+                {
+                    b.Navigation("user")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("server.src.Models.entity.User", b =>

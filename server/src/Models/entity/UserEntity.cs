@@ -1,4 +1,5 @@
 using server.src.Models.entity.structure;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace server.src.Models.entity
 {
