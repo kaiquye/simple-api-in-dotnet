@@ -5,7 +5,7 @@ using server.src.Models.entity.structure;
 
 namespace server.src.Models.dto
 {
-    public class NewUserDtoValidation : AbstractValidator<NewUserDto>
+    public class NewUserDtoValidation : AbstractValidator<NewUserDtoReq>
     {
         public NewUserDtoValidation()
         {
@@ -25,7 +25,7 @@ namespace server.src.Models.dto
            .NotEmpty();
         }
     }
-    public class NewUserDto
+    public class NewUserDtoReq
     {
         public string fist_name { get; set; }
         public string? last_name { get; set; }

@@ -6,6 +6,6 @@ namespace server.src.Services.structure
 {
     public interface IUserService
     {
-        public Task<Result> create(NewUserDto data);
+        public Task<Result> create(NewUserDtoReq data);
     }
 }

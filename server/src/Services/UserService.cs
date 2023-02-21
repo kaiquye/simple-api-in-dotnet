@@ -15,7 +15,7 @@ namespace server.src.Services
             _userRep = userRep;
         }
 
-        public async Task<Result> create(NewUserDto data)
+        public async Task<Result> create(NewUserDtoReq data)
         {
             bool emailExists = await _userRep.emailExists(data.email);
             if (emailExists == true)

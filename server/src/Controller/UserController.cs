@@ -17,7 +17,7 @@ namespace server.src.Controller
         }
 
         [HttpPost]
-        public async Task<Result> create(NewUserDto data)
+        public async Task<Result> create(NewUserDtoReq data)
         {
             return await _userService.create(data);
         }
