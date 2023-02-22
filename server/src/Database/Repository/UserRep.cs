@@ -26,5 +26,10 @@ namespace server.src.Database.Repository
         {
             return await _postgres.users.Where(user => user.email == email).Select(user => new User { Id = user.Id, password = user.password, email = user.email }).FirstOrDefaultAsync();
         }
+
+        public async Task<List<User>> findAll()
+        {
+            return await _postgres.users.Include(user => user.address).ToListAsync();
+        }
     }
 }

@@ -18,7 +18,6 @@ namespace server.src.Controller
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<Result> create(NewUserDtoReq data)
         {
             return await _userService.create(data);
@@ -29,6 +28,13 @@ namespace server.src.Controller
         public async Task<Result> login(LoginDto login)
         {
             return await _userService.login(login);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<Result> getAll()
+        {
+            return await _userService.getAll();
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using server.src.Models.entity;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace server.src.shared.security.token
 {

@@ -6,5 +6,7 @@ namespace server.src.Database.Repository.structure
     {
         public Task<User> save(User user);
         public Task<User?> emailExists(string email);
+
+        public Task<List<User>> findAll();
     }
 }
