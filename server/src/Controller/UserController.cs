@@ -31,7 +31,6 @@ namespace server.src.Controller
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<Result> getAll()
         {
             return await _userService.getAll();
