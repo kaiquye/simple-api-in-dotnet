@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using server.src.Models.entity;
 
-namespace server.src.common.error
+namespace server.src.Shared.error
 {
     public class Result : JsonResult
     {

@@ -1,6 +1,5 @@
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using server.src.common.filters;
 using server.src.Database.Connection;
 using server.src.Database.Repository;
 using server.src.Database.Repository.structure;
@@ -10,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using server.src.Shaerd.filters;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ConnectionDb>(opts => opts.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));

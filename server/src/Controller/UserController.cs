@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using server.src.common.error;
 using server.src.Models.dto;
 using server.src.Models.entity;
 using server.src.Services.structure;
+using server.src.Shared.error;
 
 namespace server.src.Controller
 {

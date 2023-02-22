@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace server.src.common.filters
+namespace server.src.Shaerd.filters
 {
     public class ExceptionFilters : IExceptionFilter
     {

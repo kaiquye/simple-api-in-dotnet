@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using server.src.Models.entity;
 
-namespace server.src.shared.security.token
+namespace server.src.Shared.security.token
 {
     public class Response
     {

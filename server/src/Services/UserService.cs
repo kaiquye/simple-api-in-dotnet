@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Identity;
-using server.src.common.error;
 using server.src.Database.Repository.structure;
 using server.src.Models.dto;
 using server.src.Models.entity;
 using server.src.Services.structure;
-using server.src.shared.security.token;
+using server.src.Shared.error;
+using server.src.Shared.security.token;
 
 namespace server.src.Services
 {
@@ -80,7 +80,5 @@ namespace server.src.Services
                 return Result.fail(500, "Error: internal error when login a user", null);
             }
         }
-
-
     }
 }

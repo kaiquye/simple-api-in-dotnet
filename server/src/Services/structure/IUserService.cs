@@ -1,6 +1,6 @@
-using server.src.common.error;
 using server.src.Models.dto;
 using server.src.Models.entity;
+using server.src.Shared.error;
 
 namespace server.src.Services.structure
 {
