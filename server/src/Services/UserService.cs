@@ -47,6 +47,12 @@ namespace server.src.Services
             }
         }
 
+        public async Task<Result> getAll()
+        {
+            List<User> users = await _userRep.findAll();
+            return Result.success(200, users);
+        }
+
         public async Task<Result> login(LoginDto data)
         {
             try
@@ -68,11 +74,13 @@ namespace server.src.Services
                 var token = Token.Generate(user);
                 return Result.success(200, new { accessToken = token.accessToken, expiresin = token.expiresin }, null);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return Result.fail(500, "Error: internal error when login a user", null);
             }
         }
+
+
     }
 }

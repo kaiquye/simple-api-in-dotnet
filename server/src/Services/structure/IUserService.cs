@@ -8,5 +8,6 @@ namespace server.src.Services.structure
     {
         public Task<Result> create(NewUserDtoReq data);
         public Task<Result> login(LoginDto data);
+        public Task<Result> getAll();
     }
 }
