@@ -24,7 +24,6 @@ namespace server.src.Controller
         }
         [HttpPost]
         [Route("login")]
-
         public async Task<Result> login(LoginDto login)
         {
             return await _userService.login(login);
