@@ -15,15 +15,15 @@ namespace server.src.common.error
             this.StatusCode = status;
         }
 
-        public static Result success<T>(int status, params T[] value)
+        public static Result success(int status, params object[] data)
         {
-            var response = new { data = value, status, sucess = true };
+            var response = new { data = data, status = status, success = true };
             return new Result(response, status);
         }
 
-        public static Result fail<T>(int status, T value)
+        public static Result fail(int status, string message, object? data)
         {
-            var response = new { error = value, status, sucess = false };
+            var response = new { messageError = message, status = status, success = false, data };
             return new Result(response, status);
         }
     }

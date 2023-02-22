@@ -8,7 +8,7 @@ namespace server.src.Models.dto
     {
         public LoginDtoValidation()
         {
-            RuleFor(dto => dto.userName)
+            RuleFor(dto => dto.email)
             .NotNull();
 
             RuleFor(dto => dto.password)
@@ -22,7 +22,7 @@ namespace server.src.Models.dto
     }
     public class LoginDto
     {
-        public string userName { get; set; }
+        public string email { get; set; }
         public string password { get; set; }
     }
 }

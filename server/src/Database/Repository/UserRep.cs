@@ -22,14 +22,9 @@ namespace server.src.Database.Repository
             user.password = null;
             return user;
         }
-        public async Task<bool> emailExists(string email)
+        public async Task<User?> emailExists(string email)
         {
-            var id = await _postgres.users.Where(user => user.email == email).Select(user => new { Id = user.Id }).FirstOrDefaultAsync();
-            if (id != null)
-            {
-                return true;
-            }
-            return false;
+            return await _postgres.users.Where(user => user.email == email).Select(user => new User { Id = user.Id, password = user.password, email = user.email }).FirstOrDefaultAsync();
         }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using server.src.common.error;
 using server.src.Models.dto;
@@ -17,9 +18,17 @@ namespace server.src.Controller
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<Result> create(NewUserDtoReq data)
         {
             return await _userService.create(data);
+        }
+        [HttpPost]
+        [Route("login")]
+
+        public async Task<Result> login(LoginDto login)
+        {
+            return await _userService.login(login);
         }
     }
 }

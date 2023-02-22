@@ -7,5 +7,6 @@ namespace server.src.Services.structure
     public interface IUserService
     {
         public Task<Result> create(NewUserDtoReq data);
+        public Task<Result> login(LoginDto data);
     }
 }
