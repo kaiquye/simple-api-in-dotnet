@@ -1,14 +1,15 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { Container, Main, Form, FormProvider } from "./style/styles.componets";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { Container, Main, Form, FormProvider } from './style/styles.componets';
+import { InputProvider } from '../../components/input';
 
 export function LoginPage() {
   const validate = yup
     .object({
-      email: yup.string().required("Email is required"),
-      password: yup.string().required("Password is required"),
+      email: yup.string().required('Email is required'),
+      password: yup.string().required('Password is required'),
     })
     .required();
 
@@ -28,11 +29,9 @@ export function LoginPage() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormProvider>
             <label>e-mail</label>
-            <input {...register("login")} placeholder="e-mail" />
-            <p style={{ color: "red" }}>{errors.email?.message}</p>
+            <InputProvider validator={register} name={'email'} errors={errors} />
             <label>Password</label>
-            <input {...register("password")} placeholder="password" />
-            <p style={{ color: "red" }}>{errors.password?.message}</p>
+            <InputProvider validator={register} name={'password'} errors={errors} />
             <button>login</button>
           </FormProvider>
         </Form>
