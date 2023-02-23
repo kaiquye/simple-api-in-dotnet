@@ -3,9 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Container, Main, Form, FormProvider } from './style/styles.componets';
-import { InputProvider } from '../../components/input';
-import { LabelProvider } from '../../components/label';
-import { ButtonProvider } from '../../components/button';
+import { appStyle } from '../../components';
 
 export function LoginPage() {
   const validate = yup
@@ -30,11 +28,11 @@ export function LoginPage() {
         <h2>LOGIN</h2>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormProvider>
-            <LabelProvider>E-mail</LabelProvider>
-            <InputProvider validator={register} name={'email'} errors={errors} />
-            <LabelProvider>Password</LabelProvider>
-            <InputProvider validator={register} name={'password'} errors={errors} />
-            <ButtonProvider>login</ButtonProvider>
+            <appStyle.Label>E-mail</appStyle.Label>
+            <appStyle.Input validator={register} name={'email'} errors={errors} />
+            <appStyle.Label>Password</appStyle.Label>
+            <appStyle.Input validator={register} name={'password'} errors={errors} />
+            <appStyle.Button>login</appStyle.Button>
           </FormProvider>
         </Form>
       </Main>
