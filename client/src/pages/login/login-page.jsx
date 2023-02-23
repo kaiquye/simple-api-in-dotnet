@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Container, Main, Form, FormProvider } from './style/styles.componets';
 import { InputProvider } from '../../components/input';
+import { LabelProvider } from '../../components/label';
+import { ButtonProvider } from '../../components/button';
 
 export function LoginPage() {
   const validate = yup
@@ -28,11 +30,11 @@ export function LoginPage() {
         <h2>LOGIN</h2>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormProvider>
-            <label>e-mail</label>
+            <LabelProvider>E-mail</LabelProvider>
             <InputProvider validator={register} name={'email'} errors={errors} />
-            <label>Password</label>
+            <LabelProvider>Password</LabelProvider>
             <InputProvider validator={register} name={'password'} errors={errors} />
-            <button>login</button>
+            <ButtonProvider>login</ButtonProvider>
           </FormProvider>
         </Form>
       </Main>
