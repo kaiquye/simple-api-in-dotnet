@@ -2,8 +2,18 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Container, Main, Form, FormProvider } from './style/styles.componets';
-import { appStyle, appStyles } from '../../components';
+import {
+  Container,
+  Main,
+  Form,
+  FormProvider,
+  DivBtnForm,
+  RegisterLink,
+  Title,
+  BackgroundImage,
+  TitleBackground,
+} from './style/styles.componets';
+import { appStyles } from '../../components';
 
 export function LoginPage() {
   const validate = yup
@@ -25,14 +35,22 @@ export function LoginPage() {
   return (
     <Container>
       <Main>
-        <h2>LOGIN</h2>
+        <BackgroundImage></BackgroundImage>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormProvider>
+            <TitleBackground>
+              <Title>Login</Title>
+            </TitleBackground>
             <appStyles.Label>E-mail</appStyles.Label>
-            <appStyles.Input validator={register} name={'email'} errors={errors} />
+            <appStyles.Input validator={register} name={' email'} errors={errors} />
             <appStyles.Label>Password</appStyles.Label>
-            <appStyles.Input validator={register} name={'password'} errors={errors} />
-            <appStyles.Button>login</appStyles.Button>
+            <appStyles.Input validator={register} name={' password'} errors={errors} />
+            <appStyles.Label>
+              Não tem uma conta ?<RegisterLink> Inscrever-se</RegisterLink>
+            </appStyles.Label>
+            <DivBtnForm>
+              <appStyles.Button>Entrar</appStyles.Button>
+            </DivBtnForm>
           </FormProvider>
         </Form>
       </Main>
