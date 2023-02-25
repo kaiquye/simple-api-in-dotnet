@@ -14,6 +14,7 @@ import { ConsultAddressViacep } from '../../useCases/via-cep/consult-address.via
 import { useState } from 'react';
 import { CreateUser } from '../../useCases/api/create-user.api';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export function Register() {
   const [fistName, setFistName] = useState(null);
@@ -23,6 +24,7 @@ export function Register() {
   const [street, setStreet] = useState(null);
   const [zipCode, setZipCode] = useState(null);
   const [city, setCity] = useState(null);
+  const navigate = useNavigate();
 
   const viaCep = new ConsultAddressViacep();
   const createUserService = new CreateUser();
@@ -48,7 +50,8 @@ export function Register() {
     });
 
     if (created?.status === 201 || created?.success === true) {
-      return alert('user created with success');
+      alert('user created with success');
+      return navigate('/login');
     }
   };
 

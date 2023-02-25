@@ -23,7 +23,7 @@ export class CreateUser extends UseCaseBase {
     } catch (e) {
       console.log(e);
       if (e.name === 'AxiosError') {
-        alert('server error ' + e.message);
+        alert(e.response.data.messageError);
       }
     }
   }
