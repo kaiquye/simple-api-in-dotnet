@@ -12,6 +12,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { ConsultAddressViacep } from '../../useCases/via-cep/consult-address.viacep';
 import { useState } from 'react';
+import { CreateUser } from '../../useCases/api/create-user.api';
+import axios from 'axios';
 
 export function Register() {
   const [fistName, setFistName] = useState(null);
@@ -23,13 +25,29 @@ export function Register() {
   const [city, setCity] = useState(null);
 
   const viaCep = new ConsultAddressViacep();
+  const createUserService = new CreateUser();
 
   const findAddress = async (zipCode) => {
-    console.log(zipCode);
-    const address = await viaCep.findAddressByZipCode(zipCode);
-    setCity(address.localidade);
-    setStreet(address.logradouro);
     setZipCode(zipCode);
+    const address = await viaCep.findAddressByZipCode(zipCode);
+    if (address) {
+      setCity(address.localidade);
+      setStreet(address.logradouro);
+    }
+  };
+
+  const createUser = async () => {
+    console.log(fistName, lastName, password);
+    const created = await createUserService.createUser({
+      fistName,
+      lastName,
+      email,
+      password,
+      street,
+      city,
+      zipCode,
+    });
+    console.log(created);
   };
 
   const validate = yup
@@ -51,13 +69,16 @@ export function Register() {
   } = useForm({
     resolver: yupResolver(validate),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    await createUser();
+  };
 
   return (
     <Container>
       <Main>
         <BackgroundImage></BackgroundImage>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={(event) => onSubmit(event)}>
           <FormProvider>
             <TitleBackground>
               <Title>Register</Title>
@@ -69,13 +90,15 @@ export function Register() {
             <appStyles.Label>E-mail</appStyles.Label>
             <appStyles.Input validator={register} name={'email'} errors={errors} onChange={setEmail} />
             <appStyles.Label>Password</appStyles.Label>
-            <appStyles.Input validator={register} name={'password'} errors={errors} onChange={setCity} />
+            <appStyles.Input validator={register} name={'password'} errors={errors} onChange={setPassword} />
             <appStyles.Label>Zip code</appStyles.Label>
             <appStyles.Input validator={register} name={'zip_code'} errors={errors} onBlur={findAddress} />
             <appStyles.Label>street</appStyles.Label>
-            <appStyles.Input disabled={true} validator={register} name={'street'} value={street} />
+            <appStyles.Input disabled={true} validator={register} name={street ?? 'street'} value={street} />
             <appStyles.Label>city</appStyles.Label>
-            <appStyles.Input disabled={true} validator={register} name={'city'} value={city} />
+            <appStyles.Input disabled={true} validator={register} name={city ?? 'city'} value={city} />
+            <button>tested</button>
+
             <DivBtnForm>
               <appStyles.Button>Register</appStyles.Button>
             </DivBtnForm>

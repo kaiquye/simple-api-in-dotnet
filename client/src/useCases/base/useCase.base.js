@@ -21,7 +21,6 @@ export class UseCaseBase {
       url: `${this.baseUrl}${url}`,
       params: params ? params : null,
       headers: headers ? headers : null,
-      withCredentials: true,
     });
   }
 
