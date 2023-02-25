@@ -1,4 +1,4 @@
-import { UseCaseBase } from '../base/useCase.base';
+import { UseCaseBase } from '../../base/useCase.base';
 
 export class ConsultAddressViacep extends UseCaseBase {
   constructor() {

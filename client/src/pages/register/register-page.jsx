@@ -10,9 +10,9 @@ import { appStyles } from '../../components';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { ConsultAddressViacep } from '../../useCases/via-cep/consult-address.viacep';
+import { ConsultAddressViacep } from '../../useCases/client/via-cep/consult-address.viacep';
 import { useState } from 'react';
-import { CreateUser } from '../../useCases/api/create-user.api';
+import { CreateUser } from '../../useCases/server/user/create-user.api';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
