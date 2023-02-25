@@ -17,8 +17,6 @@ export class CreateUser extends UseCaseBase {
         city: body.city,
       },
     };
-
-    console.log('data', data);
     try {
       const resp = await this.Post('user', data);
       return resp.data;

@@ -37,7 +37,6 @@ export function Register() {
   };
 
   const createUser = async () => {
-    console.log(fistName, lastName, password);
     const created = await createUserService.createUser({
       fistName,
       lastName,
@@ -47,7 +46,10 @@ export function Register() {
       city,
       zipCode,
     });
-    console.log(created);
+
+    if (created?.status === 201 || created?.success === true) {
+      return alert('user created with success');
+    }
   };
 
   const validate = yup
