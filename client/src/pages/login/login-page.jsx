@@ -28,12 +28,11 @@ export function LoginPage() {
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validate),
   });
-  const onSubmit = (data) => {};
+  const onSubmit = async (data) => {};
 
   return (
     <Container>
@@ -45,9 +44,9 @@ export function LoginPage() {
               <Title>Login</Title>
             </TitleBackground>
             <appStyles.Label>E-mail</appStyles.Label>
-            <appStyles.Input validator={register} name={'email'} errors={errors} />
+            <appStyles.Input validator={register} name={'email'} errors={errors} onChange={setEmail} />
             <appStyles.Label>Password</appStyles.Label>
-            <appStyles.Input validator={register} name={'password'} errors={errors} />
+            <appStyles.Input validator={register} name={'password'} errors={errors} onChange={setPassword} />
             <appStyles.Label>
               Não tem uma conta ?<RegisterLink> Inscrever-se</RegisterLink>
             </appStyles.Label>
