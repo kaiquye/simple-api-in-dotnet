@@ -21,7 +21,6 @@ export class CreateUser extends UseCaseBase {
       const resp = await this.Post('user', data);
       return resp.data;
     } catch (e) {
-      console.log(e);
       if (e.name === 'AxiosError') {
         alert(e.response.data.messageError);
       }
