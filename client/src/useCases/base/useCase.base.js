@@ -25,13 +25,13 @@ export class UseCaseBase {
     });
   }
 
-  Get(url, data, params = undefined, headers = undefined) {
-    return this.instance({
+  async Get(url, data, params = undefined, headers = undefined, Credentials = false) {
+    return await this.instance({
       method: 'GET',
       url: `${this.baseUrl}${url}`,
       params: params ? params : null,
       headers: headers ? headers : null,
-      withCredentials: true,
+      withCredentials: Credentials,
     });
   }
 }

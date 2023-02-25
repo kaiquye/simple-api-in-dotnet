@@ -42,9 +42,9 @@ export function LoginPage() {
               <Title>Login</Title>
             </TitleBackground>
             <appStyles.Label>E-mail</appStyles.Label>
-            <appStyles.Input validator={register} name={' email'} errors={errors} />
+            <appStyles.Input validator={register} name={'email'} errors={errors} />
             <appStyles.Label>Password</appStyles.Label>
-            <appStyles.Input validator={register} name={' password'} errors={errors} />
+            <appStyles.Input validator={register} name={'password'} errors={errors} />
             <appStyles.Label>
               Não tem uma conta ?<RegisterLink> Inscrever-se</RegisterLink>
             </appStyles.Label>
