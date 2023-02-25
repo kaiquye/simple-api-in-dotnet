@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-const ButtonStyled = styled.label`
+const ButtonStyled = styled.button`
   width: 99%;
   background-color: #ff8000;
   color: #efefef;
   border-radius: 4px;
   padding-top: 6px;
+  border: none;
   padding-bottom: 6px;
   text-align: center;
   font-family: Arial;
@@ -16,7 +17,7 @@ const ButtonStyled = styled.label`
 
   &:hover {
     background-color: #cbcbcb;
-    color: #222;
+    color: #626262;
   }
 `;
 

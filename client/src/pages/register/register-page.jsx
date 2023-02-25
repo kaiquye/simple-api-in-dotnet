@@ -1,29 +1,22 @@
+import React from 'react';
 import { Container, Form, FormProvider, Main } from './style/styles.componets';
-import {
-  BackgroundImage,
-  DivBtnForm,
-  RegisterLink,
-  Title,
-  TitleBackground,
-} from '../login/style/styles.componets';
+import { BackgroundImage, DivBtnForm, Title, TitleBackground } from '../login/style/styles.componets';
 import { appStyles } from '../../components';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { ConsultAddressViacep } from '../../useCases/client/via-cep/consult-address.viacep';
-import { useState } from 'react';
 import { CreateUser } from '../../useCases/server/user/create-user.api';
-import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function Register() {
-  const [fistName, setFistName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [street, setStreet] = useState(null);
-  const [zipCode, setZipCode] = useState(null);
-  const [city, setCity] = useState(null);
+  const [fistName, setFistName] = React.useState(null);
+  const [lastName, setLastName] = React.useState(null);
+  const [email, setEmail] = React.useState(null);
+  const [password, setPassword] = React.useState(null);
+  const [street, setStreet] = React.useState(null);
+  const [zipCode, setZipCode] = React.useState(null);
+  const [city, setCity] = React.useState(null);
   const navigate = useNavigate();
 
   const viaCep = new ConsultAddressViacep();
@@ -103,7 +96,6 @@ export function Register() {
             <appStyles.Label>city</appStyles.Label>
             <appStyles.Input disabled={true} validator={register} name={city ?? 'city'} value={city} />
             <button>tested</button>
-
             <DivBtnForm>
               <appStyles.Button>Register</appStyles.Button>
             </DivBtnForm>

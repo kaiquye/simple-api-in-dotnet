@@ -16,6 +16,9 @@ import {
 import { appStyles } from '../../components';
 
 export function LoginPage() {
+  const [email, setEmail] = React.useState(null);
+  const [password, setPassword] = React.useState(null);
+
   const validate = yup
     .object({
       email: yup.string().required('Email is required'),
@@ -30,13 +33,13 @@ export function LoginPage() {
   } = useForm({
     resolver: yupResolver(validate),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {};
 
   return (
     <Container>
       <Main>
         <BackgroundImage></BackgroundImage>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={onSubmit}>
           <FormProvider>
             <TitleBackground>
               <Title>Login</Title>
