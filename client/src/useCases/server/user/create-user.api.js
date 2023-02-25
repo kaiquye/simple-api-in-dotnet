@@ -21,6 +21,10 @@ export class CreateUser extends UseCaseBase {
       const resp = await this.Post('user', data);
       return resp.data;
     } catch (e) {
+      if (e.name === 'AxiosError' && e.response.status === 400) {
+        alert('Error: The values sent are not the expected ones ');
+      }
+
       if (e.name === 'AxiosError') {
         alert(e.response.data.messageError);
       }

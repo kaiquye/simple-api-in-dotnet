@@ -14,10 +14,24 @@ import {
   TitleBackground,
 } from './style/styles.componets';
 import { appStyles } from '../../components';
+import { LoginUser } from '../../useCases/server/user/login-user.api';
+import { Link } from 'react-router-dom';
 
 export function LoginPage() {
+  const login = new LoginUser();
   const [email, setEmail] = React.useState(null);
   const [password, setPassword] = React.useState(null);
+
+  const loginUser = async () => {
+    const logged = await login.execute({
+      email,
+      password,
+    });
+
+    if (logged?.status === 201 || logged?.success === true) {
+      alert('user logged');
+    }
+  };
 
   const validate = yup
     .object({
@@ -32,7 +46,10 @@ export function LoginPage() {
   } = useForm({
     resolver: yupResolver(validate),
   });
-  const onSubmit = async (data) => {};
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    await loginUser();
+  };
 
   return (
     <Container>
@@ -48,7 +65,7 @@ export function LoginPage() {
             <appStyles.Label>Password</appStyles.Label>
             <appStyles.Input validator={register} name={'password'} errors={errors} onChange={setPassword} />
             <appStyles.Label>
-              Não tem uma conta ?<RegisterLink> Inscrever-se</RegisterLink>
+              Não tem uma conta ?<Link to={'/register'}> Inscrever-se</Link>
             </appStyles.Label>
             <DivBtnForm>
               <appStyles.Button>Entrar</appStyles.Button>

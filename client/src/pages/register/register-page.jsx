@@ -95,7 +95,6 @@ export function Register() {
             <appStyles.Input disabled={true} validator={register} name={street ?? 'street'} value={street} />
             <appStyles.Label>city</appStyles.Label>
             <appStyles.Input disabled={true} validator={register} name={city ?? 'city'} value={city} />
-            <button>tested</button>
             <DivBtnForm>
               <appStyles.Button>Register</appStyles.Button>
             </DivBtnForm>
