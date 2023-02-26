@@ -4,7 +4,7 @@ import { LoginPage } from '../pages/login/login-page';
 import { Register } from '../pages/register/register-page';
 
 export function AppRoutes() {
-  const ProtectedRoute = ({ user, redirectPath = '/landing' }) => {
+  const ProtectedRoute = ({ user, redirectPath = '/login' }) => {
     if (!user) {
       return <Navigate to={redirectPath} replace />;
     }
