@@ -1,5 +1,5 @@
 const NAME_TOKEN = 'auth.user.app';
-export function AuthLocalStore() {
+export function TokenStorage() {
   return {
     add: (item) => {
       return localStorage.setItem(NAME_TOKEN, item);

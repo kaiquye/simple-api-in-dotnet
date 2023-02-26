@@ -15,12 +15,13 @@ import {
 } from './style/styles.componets';
 import { appStyles } from '../../components';
 import { LoginUser } from '../../useCases/server/user/login-user.api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
   const login = new LoginUser();
   const [email, setEmail] = React.useState(null);
   const [password, setPassword] = React.useState(null);
+  const navigate = useNavigate();
 
   const loginUser = async () => {
     const logged = await login.execute({
@@ -29,8 +30,7 @@ export function LoginPage() {
     });
 
     if (logged?.status === 201 || logged?.success === true) {
-      alert('user logged');
-      console.log(logged);
+      return navigate('/deshboard');
     }
   };
 

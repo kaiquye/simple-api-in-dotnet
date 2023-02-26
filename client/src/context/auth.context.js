@@ -1,15 +1,28 @@
 import React from 'react';
-export const AuthContext = React.createContext();
+import { TokenStorage } from '../useCases/client/storage/auth.local-store';
+export const AuthContext = React.createContext({});
 
-export const AuthContext = function () {
+export const AuthContextProvider = function ({ children }) {
   const [user, setUser] = React.useState(false);
+
+  React.useEffect(() => {
+    if (TokenStorage().get()) {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  }, []);
 
   const setToken = function (token) {
     if (token) {
       setToken(token);
-      localStorage;
+      TokenStorage().add(token);
     }
   };
 
-  return <AuthContext.Provider value={(user, setUser)}>{{ children }}</AuthContext.Provider>;
+  const getToken = function () {
+    return TokenStorage().get();
+  };
+
+  return <AuthContext.Provider value={{ user, setToken, getToken }}>{children}</AuthContext.Provider>;
 };
