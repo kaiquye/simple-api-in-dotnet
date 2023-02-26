@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/style.module.css';
 import { Container, Main } from './style/styles.componets';
 import { FindAllUser } from '../../useCases/server/user/find-all-user.api';
 export function DashboardPage() {
@@ -7,7 +8,7 @@ export function DashboardPage() {
 
   const findAllUsers = async () => {
     const response = await getAllUsers.execute();
-    console.log(response);
+    setUsers(response.data[0]);
   };
 
   React.useEffect(() => {
@@ -20,7 +21,25 @@ export function DashboardPage() {
 
   return (
     <Container>
-      <Main></Main>
+      <Main>
+        <table>
+          <tr>
+            <th>Fist name</th>
+            <th>Last name</th>
+            <th>E-mail</th>
+          </tr>
+          {users &&
+            users.map((user) => (
+              <>
+                <tr>
+                  <td>{user.fist_name}</td>
+                  <td>{user.last_name}</td>
+                  <td>{user.email}</td>
+                </tr>
+              </>
+            ))}
+        </table>
+      </Main>
     </Container>
   );
 }

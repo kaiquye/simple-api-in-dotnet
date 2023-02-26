@@ -18,11 +18,12 @@ const Container = styled.section`
 const Main = styled.main`
   width: 700px;
   height: 500px;
-  background-color: #d00000;
+  background-color: rgba(255, 198, 113, 0.24);
 
   display: grid;
-  grid-template-columns: 50% 50%;
   box-shadow: rgba(250, 72, 6, 0.71) 0px 10px 10px 10px;
+  overflow: auto;
+  border: 5px solid #e8e8e8;
 `;
 
 export { Container, Main };

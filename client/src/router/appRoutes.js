@@ -4,6 +4,7 @@ import { LoginPage } from '../pages/login/login-page';
 import { Register } from '../pages/register/register-page';
 import { AuthContext, AuthContextProvider } from '../context/auth.context';
 import React from 'react';
+import { NotFoundPage } from '../pages/not-found/not-found.page';
 export function AppRoutes() {
   const { user } = React.useContext(AuthContext);
   const ProtectedRoute = ({ user, redirectPath = '/login' }) => {
@@ -22,7 +23,7 @@ export function AppRoutes() {
           <Route element={<ProtectedRoute user={true} />}>
             <Route path={'/dashboard'} element={<DashboardPage />} />
           </Route>
-          <Route path={'*'} element={<>tested</>} />
+          <Route path={'*'} element={<NotFoundPage />} />
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>
