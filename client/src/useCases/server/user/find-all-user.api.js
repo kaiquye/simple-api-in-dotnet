@@ -6,17 +6,15 @@ export class FindAllUser extends UseCaseBase {
     super('http://localhost:5091/v1/');
   }
 
-  async execute(body) {
+  async execute() {
     try {
       const token = TokenStorage().get();
-
-      const resp = await this.Post('user', null, null, {
+      const resp = await this.Get('user', null, null, {
         authorization: 'bearer ' + token,
       });
 
       return resp.data;
     } catch (e) {
-      console.log(e);
       if (e.name === 'AxiosError' && e.response.status === 400) {
         alert('Error: The values sent are not the expected ones ');
       }

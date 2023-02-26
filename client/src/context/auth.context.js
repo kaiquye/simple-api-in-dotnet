@@ -6,7 +6,7 @@ export const AuthContextProvider = function ({ children }) {
   const [user, setUser] = React.useState(false);
 
   React.useEffect(() => {
-    if (TokenStorage().get()) {
+    if (TokenStorage().get() !== null) {
       setUser(true);
     } else {
       setUser(false);
@@ -14,8 +14,9 @@ export const AuthContextProvider = function ({ children }) {
   }, []);
 
   const setToken = function (token) {
+    console.log('aaaaaaaaaaa' + token);
     if (token) {
-      setToken(token);
+      setUser(token);
       TokenStorage().add(token);
     }
   };

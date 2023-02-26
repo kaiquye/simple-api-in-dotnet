@@ -16,9 +16,12 @@ import {
 import { appStyles } from '../../components';
 import { LoginUser } from '../../useCases/server/user/login-user.api';
 import { Link, useNavigate } from 'react-router-dom';
+import { TokenStorage } from '../../useCases/client/storage/auth.local-store';
+import { AuthContext } from '../../context/auth.context';
 
 export function LoginPage() {
   const login = new LoginUser();
+  const { user, setToken } = React.useContext(AuthContext);
   const [email, setEmail] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const navigate = useNavigate();
@@ -30,7 +33,8 @@ export function LoginPage() {
     });
 
     if (logged?.status === 201 || logged?.success === true) {
-      return navigate('/deshboard');
+      setToken(logged.data[0].accessToken);
+      return navigate('/dashboard');
     }
   };
 
@@ -52,6 +56,11 @@ export function LoginPage() {
     await loginUser();
   };
 
+  // React.useEffect(() => {
+  //   if (user) {
+  //     return navigate('/dashboard');
+  //   }
+  // }, []);
   return (
     <Container>
       <Main>
