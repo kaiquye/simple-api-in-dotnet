@@ -30,6 +30,7 @@ export function LoginPage() {
 
     if (logged?.status === 201 || logged?.success === true) {
       alert('user logged');
+      console.log(logged);
     }
   };
 
